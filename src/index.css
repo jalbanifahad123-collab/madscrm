@@ -1,0 +1,68 @@
+@import "tailwindcss";
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+@theme {
+  --font-sans: "Inter", ui-sans-system, system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  --color-brand: #2248f5;
+  --color-brand2: #2b59ff;
+  --color-limey: #c6f542;
+}
+
+* { -webkit-font-smoothing: antialiased; text-rendering: optimizeLegibility; }
+html { font-family: var(--font-sans); font-variant-numeric: tabular-nums; }
+body { margin: 0; }
+
+/* thin scrollbars */
+::-webkit-scrollbar { width: 8px; height: 8px; }
+::-webkit-scrollbar-thumb { background: rgba(120,120,130,.35); border-radius: 99px; }
+::-webkit-scrollbar-track { background: transparent; }
+
+.no-scrollbar::-webkit-scrollbar { display: none; }
+.no-scrollbar { scrollbar-width: none; }
+
+/* diagonal stripes for premium / may-jun bars */
+.stripes {
+  background-image: repeating-linear-gradient(
+    -55deg,
+    rgba(0,0,0,.045) 0 6px,
+    transparent 6px 13px
+  );
+}
+.dark .stripes {
+  background-image: repeating-linear-gradient(
+    -55deg,
+    rgba(255,255,255,.05) 0 6px,
+    transparent 6px 13px
+  );
+}
+
+/* recharts polish */
+.recharts-wrapper *:focus { outline: none !important; }
+.recharts-cartesian-axis-tick text { font-size: 9px; fill: #9a9aa3; font-weight: 500; }
+
+/* Get Premium Feature — wide soft diagonal bands like the original */
+.premium-bands {
+  background-color: #f5f5f7;
+  background-image: linear-gradient(-55deg, transparent 52%, rgba(255,255,255,.55) 52%, rgba(255,255,255,.55) 68%, transparent 68%, transparent 81%, rgba(255,255,255,.4) 81%);
+}
+.dark .premium-bands {
+  background-color: #17171b;
+  background-image: linear-gradient(-55deg, transparent 52%, rgba(255,255,255,.045) 52%, rgba(255,255,255,.045) 68%, transparent 68%, transparent 81%, rgba(255,255,255,.03) 81%);
+}
+
+/* "Next" ka lafz sirf sabse tang laptop range mein chhupa do, baaki har jagah dikhao */
+@media (min-width: 1024px) and (max-width: 1119.5px) {
+  .next-label { display: none; }
+}
+
+/* ── Mads Agency dark theme (madsagency.vercel.app jesa) ── */
+.dark { --font-sans: "Poppins", "Inter", ui-sans-system, system-ui, sans-serif; }
+.dark body {
+  background:
+    radial-gradient(1100px 800px at 92% 115%, rgba(47, 107, 255, 0.20), transparent 60%),
+    radial-gradient(900px 700px at -8% -12%, rgba(17, 48, 180, 0.40), transparent 55%),
+    radial-gradient(600px 400px at 108% 40%, rgba(12, 28, 120, 0.22), transparent 65%),
+    #030405;
+  background-attachment: fixed;
+}
